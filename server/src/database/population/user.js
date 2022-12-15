@@ -4,10 +4,10 @@ const {Model, DataTypes} = require('sequelize');
 class User extends Model {
     static init(sequelize) {
         super.init({
-            'first_name': DataTypes.STRING,
-            'last_name': DataTypes.STRING,
-            'email': DataTypes.STRING,
-            'password': DataTypes.STRING,
+            first_name: DataTypes.STRING,
+            last_name: DataTypes.STRING,
+            email: DataTypes.STRING,
+            password: DataTypes.STRING,
         },{
             sequelize,
             tableName: 'user'
@@ -22,9 +22,9 @@ async function seedUser() {
         return;
     }
 
-    for (i = 0; i < 100; i++) {
+    for (i = 1; i <= 100; i++) {
         await User.create({
-            id: i + 1,
+            id: i,
             first_name: faker.name.firstName(),
             last_name: faker.name.lastName(),
             email: faker.internet.email(),

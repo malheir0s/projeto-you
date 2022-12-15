@@ -9,7 +9,7 @@ module.exports = {
   },
 
   getFinancesByUser(req, res){
-    pool.query('SELECT * FROM financial_transaction WHERE id_user = ?', [req.query.user_id], function(error, results, fields){
+    pool.query('SELECT * FROM financial_transaction WHERE id_user = ? LIMIT 15 OFFSET ?', [req.query.user_id, parseInt(req.query.page)], function(error, results, fields){
       if (error) throw error;
       return res.json(results);
     })} 

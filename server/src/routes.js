@@ -9,7 +9,7 @@ routes.get('/users', user.getAllUsers);
 routes.post('/users', user.addUser);
 
 // rotas de financial_transaction
-routes.get('/finances', finances.getFinancesByUser)
+routes.get('/finances', finances.getFinancesByUser) // ex: GET localhost:3000/finances?user_id=1&page=0
 routes.post('/finances', finances.addFinance)
 
 module.exports = routes;

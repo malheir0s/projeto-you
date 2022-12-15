@@ -2,6 +2,7 @@ const express = require('express');
 const user = require('./controllers/user');
 const financialTransaction = require('./controllers/financialTransaction');
 const todos = require('./controllers/todos');
+const mood = require('./controllers/mood');
 
 const routes = express.Router();
 
@@ -17,5 +18,9 @@ routes.get('/financial_transaction/count/essential/:idUser', financialTransactio
 // rotas de TO DOS
 routes.get('/todos', todos.getTodosByUser); // EX: GET /todos?user_id=2&start_date=2023-01-01&end_date=2024-01-01
 routes.post('/todos', todos.addTodo);
+
+// rotas de mood
+routes.get('/mood/:idUser', mood.getMoods);
+routes.get('/mood/allActivities/:idUser/:moodLevel', mood.getMoodByLevel);
 
 module.exports = routes;

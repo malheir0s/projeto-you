@@ -1,12 +1,15 @@
 const Sequelize = require('sequelize');
 const {User, seedUser} = require('./user.js');
+const {FinancialTransction, seedFinancialTransction} = require('./financialTransaction');
 
 const models = [
     User,
+    FinancialTransction,
 ];
 
 const seeds = [
-    seedUser
+    seedUser,
+    seedFinancialTransction,
 ];
 
 const sequelize = new Sequelize({
@@ -18,15 +21,21 @@ const sequelize = new Sequelize({
     'PORT': '3306',
     define: {
         timestamps: false
-      }
+    }
 });
 
 models.map((model) => {
     model.init(sequelize)
 });
 
-seeds.map((seed) => {
-    seed();
+/*models.map((model) => {
+    if (model.associate) {
+        model.associate(models)
+    }
+})*/
+
+seeds.map(async (seed) => {
+    await seed();
 });
 
 console.log('tudo certin por aqui')

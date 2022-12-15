@@ -1,15 +1,22 @@
 const Sequelize = require('sequelize');
 const {User, seedUser} = require('./user.js');
 const {FinancialTransction, seedFinancialTransction} = require('./financialTransaction');
+const {ToDo, seedToDo} = require('./todo');
+const {CustomRepetation} = require('./customRepetation');
+const {ScheduleTime} = require('./scheduleTime');
 
 const models = [
     User,
     FinancialTransction,
+    ToDo,
+    CustomRepetation,
+    ScheduleTime
 ];
 
 const seeds = [
     seedUser,
     seedFinancialTransction,
+    seedToDo,
 ];
 
 const sequelize = new Sequelize({

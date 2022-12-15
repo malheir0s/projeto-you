@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`financial_transaction` (
   `is_expense` TINYINT NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `financial_transaction_fk_1_idx` (`id_user` ASC) VISIBLE,
+  INDEX `financial_transaction_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `financial_transaction_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`food` (
   `name` VARCHAR(255) NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `food_fk_1_idx` (`id_user` ASC) VISIBLE,
+  INDEX `food_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `food_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`meal` (
   `consumed_at` DATETIME NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `meal_fk_1_idx` (`id_user` ASC) VISIBLE,
+  INDEX `meal_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `meal_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -96,8 +96,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`meal_food` (
   `id_meal` INT NOT NULL,
   `id_food` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `meal_food_fk_1_idx` (`id_meal` ASC) VISIBLE,
-  INDEX `meal_food_fk_2_idx` (`id_food` ASC) VISIBLE,
+  INDEX `meal_food_fk_1_idx` (`id_meal` ASC),
+  INDEX `meal_food_fk_2_idx` (`id_food` ASC),
   CONSTRAINT `meal_food_fk_1`
     FOREIGN KEY (`id_meal`)
     REFERENCES `mydb`.`meal` (`id`)
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`mood` (
   `mood_level` ENUM("AMAZING", "FINE", "OK", "BAD", "AWFUL") NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `mood_fk_1_idx` (`id_user` ASC) VISIBLE,
+  INDEX `mood_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `mood_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`schedule_time` (
   `end_time` TIME NOT NULL,
   `id_custom_repetation` INT NULL,
   PRIMARY KEY (`id`),
-  INDEX `schedule_time_fk_1_idx` (`id_custom_repetation` ASC) VISIBLE,
+  INDEX `schedule_time_fk_1_idx` (`id_custom_repetation` ASC),
   CONSTRAINT `schedule_time_fk_1`
     FOREIGN KEY (`id_custom_repetation`)
     REFERENCES `mydb`.`custom_repetation` (`id`)
@@ -177,8 +177,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`to_do` (
   `id_user` INT NOT NULL,
   `id_schedule_time` INT NULL,
   PRIMARY KEY (`id`),
-  INDEX `to_do_fk_1_idx` (`id_user` ASC) VISIBLE,
-  INDEX `to_do_fk_2_idx` (`id_schedule_time` ASC) VISIBLE,
+  INDEX `to_do_fk_1_idx` (`id_user` ASC),
+  INDEX `to_do_fk_2_idx` (`id_schedule_time` ASC),
   CONSTRAINT `to_do_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`sleep` (
   `end_time` TIME NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `sleep_fk_1_idx` (`id_user` ASC) VISIBLE,
+  INDEX `sleep_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `sleep_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -221,8 +221,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`water` (
   `id_sleep` INT NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `water_fk_1_idx` (`id_user` ASC) VISIBLE,
-  INDEX `water_fk_2_idx` (`id_sleep` ASC) VISIBLE,
+  INDEX `water_fk_1_idx` (`id_user` ASC),
+  INDEX `water_fk_2_idx` (`id_sleep` ASC),
   CONSTRAINT `water_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -245,7 +245,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`consumed_water` (
   `amount` FLOAT NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `consumed_water_fk_1_idx` (`id_user` ASC) VISIBLE,
+  INDEX `consumed_water_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `consumed_water_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -263,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`sleepy_day` (
   `end_datetime` DATETIME NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `sleepy_day_fk_1_idx` (`id_user` ASC) VISIBLE,
+  INDEX `sleepy_day_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `sleepy_day_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -282,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`menstrual_cycle` (
   `flow` ENUM("HIGH", "MEDIUM", "LOW") NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `menstrual_cycle_fk_1_idx` (`id_user` ASC) VISIBLE,
+  INDEX `menstrual_cycle_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `menstrual_cycle_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -300,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`symptoms` (
   `id_menstrual_cycle` INT NOT NULL,
   `date` DATE NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `symptoms_fk_1_idx` (`id_menstrual_cycle` ASC) VISIBLE,
+  INDEX `symptoms_fk_1_idx` (`id_menstrual_cycle` ASC),
   CONSTRAINT `symptoms_fk_1`
     FOREIGN KEY (`id_menstrual_cycle`)
     REFERENCES `mydb`.`menstrual_cycle` (`id`)
@@ -323,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`goals` (
   `notification_frequency` ENUM("DAILY", "WEEKLY", "MONTHLY") NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `goals_fk_1_idx` (`id_user` ASC) INVISIBLE,
+  INDEX `goals_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `goals_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -343,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`workout_routines` (
   `exercise` VARCHAR(255) NOT NULL,
   `id_user` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `workout_routines_fk_1_idx` (`id_user` ASC) VISIBLE,
+  INDEX `workout_routines_fk_1_idx` (`id_user` ASC),
   CONSTRAINT `workout_routines_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)
@@ -362,8 +362,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`workout` (
   `id_user` INT NOT NULL,
   `id_workout_routine` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `workout_fk_1_idx` (`id_user` ASC) VISIBLE,
-  INDEX `workout_fk_2_idx` (`id_workout_routine` ASC) VISIBLE,
+  INDEX `workout_fk_1_idx` (`id_user` ASC),
+  INDEX `workout_fk_2_idx` (`id_workout_routine` ASC),
   CONSTRAINT `workout_fk_1`
     FOREIGN KEY (`id_user`)
     REFERENCES `mydb`.`user` (`id`)

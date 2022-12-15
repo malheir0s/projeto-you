@@ -6,6 +6,9 @@ const {CustomRepetation} = require('./customRepetation');
 const {ScheduleTime} = require('./scheduleTime');
 const {Sleep, seedSleep} = require('./sleep');
 const {Water, seedWater} = require('./water');
+const {ConsumedWater, seedConsumedWater} = require('./consumedWater');
+const {WorkoutRoutines} = require('./workout_routines');
+const {Workout, seedWorkout} = require('./workout');
 
 const models = [
     User,
@@ -15,6 +18,9 @@ const models = [
     ScheduleTime,
     Sleep,
     Water,
+    ConsumedWater,
+    WorkoutRoutines,
+    Workout,
 ];
 
 const seeds = [
@@ -23,6 +29,8 @@ const seeds = [
     seedToDo,
     seedSleep,
     seedWater,
+    seedConsumedWater,
+    seedWorkout,
 ];
 
 const sequelize = new Sequelize({

@@ -6,5 +6,12 @@ module.exports = {
       if (error) throw error;
       return res.json(results);
     })
+  },
+
+  addUser(req, res){  
+    pool.query('INSERT INTO user SET ?', req.body, function (error, results, fields) {
+      if (error) throw error;
+      return res.status(201).json({'msg': 'ok'});
+    })
   }
 }

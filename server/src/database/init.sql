@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`financial_transaction` (
   `value` VARCHAR(255) NOT NULL,
   `recurrent` TINYINT NOT NULL,
   `start_date` DATE NOT NULL,
-  `completed_at` DATE NOT NULL,
+  `completed_at` DATE,
   `essential` TINYINT NOT NULL,
   `is_expense` TINYINT NOT NULL,
   `id_user` INT NOT NULL,

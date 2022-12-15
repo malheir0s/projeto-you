@@ -146,10 +146,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`schedule_time` (
   `id` INT NOT NULL,
-  `start_date` VARCHAR(45) NOT NULL,
-  `end_date` VARCHAR(45) NOT NULL,
+  `start_date` DATE NOT NULL,
+  `end_date` DATE NULL,
   `has_repetition` TINYINT NOT NULL,
-  `repetition_type` ENUM("DAILY", "WEEKLY", "MONTHLY", "YEARLY") NOT NULL,
+  `repetition_type` ENUM("DAILY", "WEEKLY", "MONTHLY", "YEARLY") NULL,
   `start_time` TIME NOT NULL,
   `end_time` TIME NOT NULL,
   `id_custom_repetation` INT NULL,

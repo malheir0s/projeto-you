@@ -9,6 +9,7 @@ const {Water, seedWater} = require('./water');
 const {ConsumedWater, seedConsumedWater} = require('./consumedWater');
 const {WorkoutRoutines} = require('./workout_routines');
 const {Workout, seedWorkout} = require('./workout');
+const {Mood, seedMood} = require('./mood');
 
 const models = [
     User,
@@ -21,6 +22,7 @@ const models = [
     ConsumedWater,
     WorkoutRoutines,
     Workout,
+    Mood,
 ];
 
 const seeds = [
@@ -31,6 +33,7 @@ const seeds = [
     seedWater,
     seedConsumedWater,
     seedWorkout,
+    seedMood,
 ];
 
 const sequelize = new Sequelize({

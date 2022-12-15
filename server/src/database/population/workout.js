@@ -24,7 +24,7 @@ async function seedWorkout() {
     }
 
     for (userId = 1; userId < 100; userId++) {
-        const max = Math.floor(Math.random() * 50)
+        const max = Math.floor(Math.random() * 10)
         for (j = 0; j < max; j++) {
             try {
                 await WorkoutRoutines.create({
@@ -33,7 +33,6 @@ async function seedWorkout() {
                         min: 2,
                         max: 6
                     }),
-                    is_completed: faker.datatype.boolean(),
                     muscle_group: faker.lorem.word(),
                     reps: faker.datatype.number({
                         min: 9,
@@ -43,7 +42,7 @@ async function seedWorkout() {
                     id_user: userId,
                 })
                 
-                for (k = 0; j < max; k++) {
+                for (k = 0; j < max*3; k++) {
                     await Workout.create({
                         id: +`${userId}${j}${k}`,
                         consumed_at: faker.date.past(),
@@ -51,6 +50,7 @@ async function seedWorkout() {
                             max: 0.5,
                             min: 0.1
                         }),
+                        date: faker.date.past(),
                         id_user: userId,
                         id_workout_routine: +`${userId}${j}`
                     })

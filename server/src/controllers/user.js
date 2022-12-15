@@ -1,10 +1,10 @@
-const user = require ('../models/user');
+const pool = require('../database/db');
 
 module.exports = {
-  async getAllUsers(request, response){
-    console.log("received")
-    const all_users = await user.getAllUsers();
-    console.log("all users ,", all_users)
-    return response.json(all_users);
+  getAllUsers(req, res) {
+    pool.query('SELECT id, first_name, last_name, email FROM user', function (error, results, fields) {
+      if (error) throw error;
+      return res.json(results);
+    })
   }
 }

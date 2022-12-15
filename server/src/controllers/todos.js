@@ -26,4 +26,22 @@ module.exports = {
     }
     )
   },
+
+  getCompletedOnTimeWithGoodMood(req, res) {
+    let {user_id} = req.query;
+  
+
+    pool.query(`SELECT * FROM to_do as t
+    JOIN mood as m ON m.id_user = t.id_user
+    WHERE t.id_user = ${user_id}
+    AND t.deadline >= t.completed_at
+    AND (m.mood_level='AMAZING' OR m.mood_level='FINE' OR  m.mood_level='OK')
+    `, function (error, results, fields) {
+      if (error) throw error;
+      return res.json(results);
+
+    }
+    )
+  },
+
 }
